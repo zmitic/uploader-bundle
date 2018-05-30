@@ -1,0 +1,16 @@
+services:
+    WJB\UploaderBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
+    WJB\UploaderBundle\Service\FileUploader:
+        arguments: ['@gaufrette.cdn_filesystem', '@liip_imagine.cache.manager']
+
+    WJB\UploaderBundle\EventSubscriber\FileUpdateEventSubscriber:
+        arguments: ['@WJB\UploaderBundle\Service\FileUploader']
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+    WJB\UploaderBundle\Form\Type\FileType:
+        tags:
+            - { name: form.type }

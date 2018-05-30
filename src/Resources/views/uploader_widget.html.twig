@@ -1,0 +1,42 @@
+{% block uploader_widget %}
+
+    <div id="{{ form.vars.id }}">
+
+        <a id="wjb_uploader_{{ form.vars.id }}"
+           class="wjb_uploader"
+           data-upload-url="{{ path('wjb_uploader_upload', {filter_name: filter_name, allowed_mime_types: allowed_mime_types}) }}"
+           data-prototype="{{ form_widget(form.vars.prototype)|e('html_attr') }}"
+           data-target="#wjb_uploader_wrapper_{{ form.vars.id }}"
+           data-allowed-mime-types="{{ allowed_mime_types|join(',') }}"
+        >Upload</a>
+
+        <ul id="wjb_uploader_wrapper_{{ form.vars.id }}" class="wjb-uploader-wrapper">
+            {% for child in form %}
+                {{ form_widget(child) }}
+                {{ form_errors(child) }}
+            {% endfor %}
+        </ul>
+
+        {{ form_rest(form) }}
+    </div>
+
+{% endblock %}
+
+{% block file_widget -%}
+
+    <li id="wjb_uploader_image_remover_{{ form.vars.id }}">
+
+        <div class="wjb-uploader-image-wrapper">
+
+            <a data-wjb-uploader-image-remover="#wjb_uploader_image_remover_{{ form.vars.id }}"><span>x</span></a>
+
+            <img id="wjb_uploader_image_{{ form.vars.id }}"
+                 data-file-widget-preview
+                 {% if filename %}src="{{ filename|imagine_filter('xs') }}"{% endif %} />
+
+            {{ form_widget(form) }}
+        </div>
+
+    </li>
+
+{%- endblock %}
