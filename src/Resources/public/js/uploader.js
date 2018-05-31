@@ -1,16 +1,9 @@
 import plupload from './../../../../../../moxiecode/plupload/js/plupload.full.min';
 global.plupload = plupload;
 
-$(document).on('click', '[data-wjb-uploader-image-remover]:not(.remover-initialized)', function () {
-    let remover = $(this);
-    remover.addClass('remover-initialized');
-    let targetId = remover.attr('data-wjb-uploader-image-remover');
 
-    $(targetId).remove();
-    console.log(targetId);
-});
 
-$(document).on('mousedown', '.wjb_uploader:not(.initialized)', function () {
+$(document).on('mousedown', '[data-uploader-trigger-button]:not(.initialized)', function () {
     let button = $(this);
     button.addClass('initialized');
     let url = button.attr('data-upload-url');

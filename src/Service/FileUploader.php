@@ -65,6 +65,8 @@ class FileUploader
     {
         $filename = $file->getFilename();
         $this->cache->remove($filename);
-        $this->fs->delete($filename);
+        if ($this->fs->has($filename)) {
+            $this->fs->delete($filename);
+        }
     }
 }

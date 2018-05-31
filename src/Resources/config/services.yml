@@ -14,3 +14,8 @@ services:
     WJB\UploaderBundle\Form\Type\FileType:
         tags:
             - { name: form.type }
+
+    WJB\UploaderBundle\Twig\ButtonAttributesExtension:
+        arguments: ['@templating']
+        tags:
+            - { name: twig.extension }
