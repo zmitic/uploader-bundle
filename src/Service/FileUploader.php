@@ -34,9 +34,9 @@ class FileUploader
         $filename = sprintf('%s.%s', Uuid::uuid4()->toString(), $extension);
         if ($targetFolder) {
             $targetFolder = trim($targetFolder, '/');
-            $filename = $targetFolder.'/'.$filename;
+            $filename = $targetFolder . '/' . $filename;
         }
-        $filename = 'tmp/'.$filename;
+        $filename = 'tmp/' . $filename;
         $this->fs->write($filename, $content, true);
 
         $previewUrl = $this->cache->getBrowserPath($filename, $filterName);
@@ -52,10 +52,10 @@ class FileUploader
     {
         $tmpFilename = $file->getFilename();
         if (0 !== strpos($tmpFilename, 'tmp/')) {
-            return;
-        }
-        if ($this->fs->has($tmpFilename)) {
-            $permanentFilename = str_replace('tmp/', '', $tmpFilename);
+            // assert file presence or throw FileNotFound exception
+            $this->fs->get($tmpFilename);
+        } else {
+            $permanentFilename = substr($tmpFilename, 4);
             $this->fs->rename($tmpFilename, $permanentFilename);
             $file->setFilename($permanentFilename);
         }

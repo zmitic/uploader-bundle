@@ -2,6 +2,12 @@ import plupload from './../../../../../../moxiecode/plupload/js/plupload.full.mi
 global.plupload = plupload;
 
 
+$(document).on('click', '[data-wjb-uploader-image-remover]:not(.initialized)', function () {
+    let el = $(this);
+    el.addClass('initialized');
+    let idToRemove = el.attr('data-wjb-uploader-image-remover');
+    $(idToRemove).remove();
+});
 
 $(document).on('mousedown', '[data-uploader-trigger-button]:not(.initialized)', function () {
     let button = $(this);
@@ -45,10 +51,3 @@ $(document).on('mousedown', '[data-uploader-trigger-button]:not(.initialized)', 
     uploader.init();
 });
 
-$(document).ready(function () {
-
-
-
-
-
-});
