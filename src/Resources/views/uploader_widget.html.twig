@@ -22,7 +22,7 @@
 
             <a data-wjb-uploader-image-remover="#wjb_uploader_image_remover_{{ form.vars.id }}"><span>x</span></a>
 
-            <img class="wjb-uploader-image"
+            <img class="wjb-uploader-image img-responsive"
                  id="wjb_uploader_image_{{ form.vars.id }}"
                  data-file-widget-preview
                  {% if filename %}src="{{ filename|imagine_filter(filter_name) }}"{% endif %} />
