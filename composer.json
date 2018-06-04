@@ -17,7 +17,8 @@
         "symfony/twig-bridge": "^4.0",
         "symfony/form": "^4.0",
         "liip/imagine-bundle": "^2.0",
-        "ramsey/uuid-doctrine": "^1.4"
+        "ramsey/uuid-doctrine": "^1.4",
+        "knplabs/knp-gaufrette-bundle": "^0.5.3"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.0"
