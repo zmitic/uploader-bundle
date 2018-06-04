@@ -25,7 +25,7 @@
             <img class="wjb-uploader-image"
                  id="wjb_uploader_image_{{ form.vars.id }}"
                  data-file-widget-preview
-                 {% if filename %}src="{{ filename|imagine_filter('xs') }}"{% endif %} />
+                 {% if filename %}src="{{ filename|imagine_filter(filter_name) }}"{% endif %} />
 
             {{ form_widget(form) }}
         </div>
