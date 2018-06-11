@@ -44,6 +44,7 @@ class FileType extends AbstractType
 
         $filename = $data ? $data->getFilename() : null;
         $view->vars['filename'] = $filename;
+        $view->vars['filter_name'] = $options['filter_name'];
     }
 
     public function configureOptions(OptionsResolver $resolver): void
@@ -58,6 +59,7 @@ class FileType extends AbstractType
 
         $resolver->setRequired([
             'on_create',
+            'filter_name',
         ]);
     }
 }
