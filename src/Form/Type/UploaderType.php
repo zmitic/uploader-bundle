@@ -48,6 +48,7 @@ class UploaderType extends AbstractType
             return [
                 'on_create' => $options['on_create'],
                 'find_one_by_filename' => $options['find_one_by_filename'],
+                'filter_name' => $options['filter_name'],
             ];
         });
 
